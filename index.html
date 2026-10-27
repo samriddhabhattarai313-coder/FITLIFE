@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#287b59">
+  <title>FitLife | Daily Wellness</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>🌿 FitLife</h1>
+    <p>Small steps. Stronger you.</p>
+    <p id="today"></p>
+  </header>
+
+  <main>
+    <section class="card">
+      <p class="eyebrow">YOUR DAILY MOVEMENT</p>
+      <h2>👟 Step Counter</h2>
+      <div class="big-number" id="steps">0</div>
+      <p id="stepMessage">Every step counts!</p>
+
+      <div class="progress">
+        <div id="stepBar"></div>
+      </div>
+
+      <label for="stepInput">Total steps walked today</label>
+      <input id="stepInput" type="number" min="0"
+             step="1" placeholder="Enter steps">
+
+      <label for="goalInput">Daily step goal</label>
+      <input id="goalInput" type="number" min="100"
+             step="100" value="5000">
+
+      <button id="updateSteps">Save Steps</button>
+      <button id="saveGoal" class="secondary">Save Goal</button>
+      <p class="note">Enter your total steps manually. This app does not count steps using a sensor.</p>
+    </section>
+
+    <section class="card">
+      <p class="eyebrow">STAY HYDRATED</p>
+      <h2>💧 Water Tracker</h2>
+      <div class="big-number"><span id="waterCount">0</span><small> / 8 glasses</small></div>
+      <div id="waterCups" class="cups"></div>
+      <button id="addWater">+ Add a Glass</button>
+      <button id="undoWater" class="secondary">Undo</button>
+    </section>
+
+    <section class="section">
+      <p class="eyebrow">MOVE AT YOUR OWN PACE</p>
+      <h2>🏋️ Home Workouts</h2>
+      <p class="note">Choose movements suitable for your ability. Rest whenever needed.</p>
+
+      <div class="workouts">
+        <label class="workout">
+          <input type="checkbox" class="exercise">
+          <span><b>🚶 Warm-up walk</b><br>Walk gently in place for 3–5 minutes.</span>
+        </label>
+        <label class="workout">
+          <input type="checkbox" class="exercise">
+          <span><b>🪑 Chair sit-to-stand</b><br>Try 5 comfortable repetitions using a sturdy chair.</span>
+        </label>
+        <label class="workout">
+          <input type="checkbox" class="exercise">
+          <span><b>🙆 Shoulder rolls</b><br>Roll shoulders gently 5–10 times.</span>
+        </label>
+        <label class="workout">
+          <input type="checkbox" class="exercise">
+          <span><b>🦵 Seated leg raises</b><br>Lift each leg gently 5 times while seated.</span>
+        </label>
+        <label class="workout">
+          <input type="checkbox" class="exercise">
+          <span><b>🧘 Gentle stretching</b><br>Stretch comfortably without bouncing.</span>
+        </label>
+        <label class="workout">
+          <input type="checkbox" class="exercise">
+          <span><b>🌬️ Slow breathing</b><br>Sit comfortably and breathe naturally for 2 minutes.</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="card summary">
+      <p class="eyebrow">TODAY'S ACHIEVEMENTS</p>
+      <h2>📊 Daily Progress</h2>
+      <div class="summary-grid">
+        <div><b id="summarySteps">0</b><span>Steps</span></div>
+        <div><b id="summaryWater">0/8</b><span>Water glasses</span></div>
+        <div><b id="summaryWorkout">0/6</b><span>Workouts</span></div>
+      </div>
+      <p id="motivation">Your journey starts with one step!</p>
+      <button id="resetDay" class="danger">Reset Today's Progress</button>
+      <p class="note">Progress resets automatically when a new calendar day begins on this device.</p>
+    </section>
+
+    <p class="safety">💚 Stop if you feel pain, dizziness, chest discomfort, or unusual shortness of breath. Choose safe activities for your fitness and health.</p>
+  </main>
+
+  <footer>FitLife · Healthy habits, happier days</footer>
+
+  <script src="./script.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js")
+          .catch(error => console.error("Offline setup failed:", error));
+      });
+    }
+  </script>
+</body>
+</html>
